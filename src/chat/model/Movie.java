@@ -15,11 +15,11 @@ public class Movie
 	public Movie(String title)
 	{
 		this.title = "";
-		this.genre = null;
-		this.ratingMPAA = null;
-		this.review = null;
+		this.genre = "";
+		this.ratingMPAA = "";
+		this.review = "";
 		this.length = -99;
-		this.releaseDate = null;
+		this.releaseDate = "";
 		this.starScore = Double.NaN;
 	}
 
