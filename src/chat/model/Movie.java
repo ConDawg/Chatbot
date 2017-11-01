@@ -19,7 +19,7 @@ public class Movie
 		this.ratingMPAA = "";
 		this.review = "";
 		this.length = -99;
-		this.releaseDate = "";
+//		this.releaseDate = "";
 		this.starScore = Double.NaN;
 	}
 

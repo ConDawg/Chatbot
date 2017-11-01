@@ -20,7 +20,7 @@ public class Chatbot
 	
 	public Chatbot(String username)
 	{
-		this.movieList = new ArrayList<String>();
+//		this.movieList = new ArrayList<String>();
 		this.shoppingList = new ArrayList<String>();
 		this.cuteAnimalMemes = new ArrayList<String>();
 		this.currentTime = null;
@@ -38,7 +38,7 @@ public class Chatbot
 		buildCuteAnimals();
 		buildTopics();
 		buildQuestions();
-		buildFollowups();
+//		buildFollowups();
 	}
 	
 	private void buildVerbs()
@@ -49,20 +49,28 @@ public class Chatbot
 		verbs[3] = "am thinking about";
 	}
 	
-	private void buildMovieList()
+//	private void buildMovieList()
 	{
-		movieList.add("Spiderman");
-		movieList.add("Ratatoullie");
-		movieList.add("Hidden Figures");
-		movieList.add("Emoji Movie");
-		movieList.add("Your Name");
-		movieList.add("Back to the Future Box Set");
-		movieList.add("Shrek");
-		movieList.add("Shrek 2");
-		movieList.add("Shrek the Third");
-		movieList.add("Shrek; the Final Chapter");
-		movieList.add("The Calm Before the Storm");
+//		movieList.add("Spiderman");
+//		movieList.add("Ratatoullie");
+//		movieList.add("Hidden Figures");
+//		movieList.add("Emoji Movie");
+//		movieList.add("Your Name");
+//		movieList.add("Back to the Future Box Set");
+//		movieList.add("Shrek");
+//		movieList.add("Shrek 2");
+//		movieList.add("Shrek the Third");
+//		movieList.add("Shrek; the Final Chapter");
+//		movieList.add("The Calm Before the Storm");
 	}
+	
+	private void buildTopics()
+	{
+		topics[0] = "Memes";
+		topics[1] = "Sports";
+		topics[2] = "dogs";
+		topics[3] = "people";
+		}
 	
 	private void buildShoppingList()
 	{
@@ -80,7 +88,7 @@ public class Chatbot
 	
 	private void buildCuteAnimals()
 	{
-		cuteAnimalMemes.add("floofer");
+		cuteAnimalMemes.add("FLOOFER");
 		cuteAnimalMemes.add("pupper");
 		cuteAnimalMemes.add("otter");
 		cuteAnimalMemes.add("kittie");
@@ -91,7 +99,7 @@ public class Chatbot
 	
 	private void buildQuestions()
 	{
-		
+	
 	}
 	
 	public String processConversation(String input)
@@ -169,7 +177,13 @@ public class Chatbot
 
 	public boolean quitChecker(String exitString)
 	{
-		return false;
+		boolean validQuit = false;
+		
+		if (exitString != "" && exitString != null && !exitString.equalsIgnoreCase("exit") && exitString.equalsIgnoreCase("quit"))
+		{
+			validQuit = true;
+		}
+		return validQuit;
 	}
 
 	public boolean keyboardMashChecker(String sample)
