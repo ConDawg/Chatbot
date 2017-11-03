@@ -70,6 +70,9 @@ public class Chatbot
 		topics[1] = "Sports";
 		topics[2] = "dogs";
 		topics[3] = "people";
+		topics[4] = "Music";
+		topics[5] = "Cars";
+		topics[6] = "TV shows";
 		}
 	
 	private void buildShoppingList()
@@ -99,13 +102,22 @@ public class Chatbot
 	
 	private void buildQuestions()
 	{
-	
+		questions[0] = "How are you today?";
+		questions[1] = "What Is your favorite sport?";
+		questions[2] = "What Is your favorite TV show?";
+		questions[3] = "Why do I exist?";
+		questions[4] = "What is your favorite food?";
+		questions[5] = "What is your favorite kind of dog?";
+		questions[6] = "What is your favorite animal?";
+		questions[7] = "What is your favorite kind of song?";
+		questions[8] = "What is your favorite movie?";
+		questions[9] = "What is your favorite book?";
 	}
 	
 	public String processConversation(String input)
 	{
 		String chatbotResponse = "";
-		chatbotResponse += "You said: " + "\n";
+		chatbotResponse += "You said:" + "\n" + input + "\n";
 		
 		chatbotResponse += buildChatbotResponse();
 		
