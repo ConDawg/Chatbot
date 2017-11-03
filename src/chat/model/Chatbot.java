@@ -89,7 +89,7 @@ public class Chatbot
 		shoppingList.add("freshavacado");
 	}
 
-	private void buildCuteAnimals()
+	private void buildCuteAnimals()//acceptable animal names that can be used
 	{
 		cuteAnimalMemes.add("FLOOFER");
 		cuteAnimalMemes.add("pupper");
@@ -100,7 +100,7 @@ public class Chatbot
 		cuteAnimalMemes.add("Dik Dik");
 	}
 
-	private void buildQuestions()
+	private void buildQuestions()//lists of a bunch of questions that the chatbot can ask the user.
 	{
 		questions[0] = "How are you today?";
 		questions[1] = "What Is your favorite sport?";
@@ -172,9 +172,18 @@ public class Chatbot
 		return false;
 	}
 
-	public boolean shoppingListChecker(String shoppingItem)
+	public boolean shoppingListChecker(String shoppingItem)//clears the response to ensure that the item is valid
 	{
-		return false;
+		boolean validList = false;
+		
+		for (int index = 0; index < 11; index ++)
+		{
+			if(shoppingItem.contains(shoppingList.get(index)))
+			{
+				validList = true;
+			}
+		}
+		return validList;
 	}
 
 	public boolean movieTitleChecker(String title)
