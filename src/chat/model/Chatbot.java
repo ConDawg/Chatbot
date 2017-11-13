@@ -103,6 +103,7 @@ public class Chatbot
 	private void buildQuestions()//lists of a bunch of questions that the chatbot can ask the user.
 	{
 		questions[0] = "How are you today?";
+		
 		questions[1] = "What Is your favorite sport?";
 		questions[2] = "What Is your favorite TV show?";
 		questions[3] = "Why do I exist?";
@@ -113,7 +114,10 @@ public class Chatbot
 		questions[8] = "What is your favorite movie?";
 		questions[9] = "What is your favorite book?";
 	}
-
+/**Methods operate by taking what is said and arranging that to the method's purpose(Creates a response).
+		 * input the users text as a string.
+		 * Returns the user input and a response built by buildChatbotResponse.
+		 */
 	public String processConversation(String input)
 	{
 		String chatbotResponse = "";
@@ -123,7 +127,9 @@ public class Chatbot
 
 		return chatbotResponse;
 	}
-
+/**This method takes various items the user previously input (verbs, topics, movies, ect.) and formulates a sentence.
+ * @return Random response is given
+ */
 	private String buildChatbotResponse()
 	{
 		String response = "I ";
@@ -136,7 +142,15 @@ public class Chatbot
 
 		random = (int) (Math.random() * topics.length);
 		response += questions[random];
-
+	
+		random = (int) (Math.random() * 2);
+		
+		if (random % 2 == 0)
+		{
+			random = (int) (Math.random() * movieList.size());
+			response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
+		}
+		
 		return response;
 	}
 
@@ -145,6 +159,7 @@ public class Chatbot
 		boolean validLength = false;
 
 		if (input != null && input.length() > 2)
+			
 		{
 			validLength = true;
 		}
@@ -154,7 +169,17 @@ public class Chatbot
 
 	public boolean htmlTagChecker(String input)
 	{
-		return false;
+		boolean validTag = false;
+		
+		if (input.contains("<>") || input.contains("< >") || input.contains("<B>  ") || input.contains("<A HREF> </a>"))
+		{
+			validTag = false;
+		}
+		else if (input.contains("<B> </B>") && input.contains("<I> sdadas </i>") && input.contains("<P>") && input.contains("<A HREF=\"sdfs.html\"> </a>"))
+		{
+			validTag = true;
+		}
+		return validTag;
 	}
 
 	public boolean userNameChecker(String input)
@@ -175,7 +200,13 @@ public class Chatbot
 
 	public boolean cuteAnimalMemeChecker(String input)
 	{
-		return false;
+		boolean validMeme = false;
+		
+		if(!input.equals("pepe") && input.equals("pupper") || input.equals("otter") || input.equals("kittie"))
+		{
+			validMeme = true;
+		}
+		return validMeme;
 	}
 
 	public boolean shoppingListChecker(String shoppingItem)//clears the response to ensure that the item is valid
@@ -215,7 +246,17 @@ public class Chatbot
 
 	public boolean keyboardMashChecker(String sample)
 	{
-		return false;
+		boolean validKeyboard = false;
+		
+		if (sample.contains("sdf") || sample.contains("SDF") || sample.contains("dfg") || sample.contains("cvb") || sample.contains(",./") || sample.contains("kjh") || sample.contains("DFG") || sample.contains("DFG") || sample.contains("CVB") || sample.contains("KJH"))
+		{
+			validKeyboard = true;
+		}
+		else if (sample.contains("S.D.F.") || sample.contains("derf"))
+		{
+			validKeyboard = false;
+		}
+		return validKeyboard;
 	}
 
 	public List<Movie> getMovieList()
