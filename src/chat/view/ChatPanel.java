@@ -6,17 +6,17 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Color;
-import chat.controller.ChatController;
+import chat.controller.ChatbotController;
 
 public class ChatPanel extends JPanel
 {
-	private ChatController appController;
+	private ChatbotController appController;
 	private JButton chatButton;
 	private JTextField inputField;
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
 	
-	public ChatPanel(ChatController appController)
+	public ChatPanel(ChatbotController appController)
 	{
 		super();
 		this.appController = appController;
@@ -32,7 +32,7 @@ public class ChatPanel extends JPanel
 
 	private void setupPanel()
 	{
-		this.setBackground(Color.CYAN);
+		this.setBackground(new Color(0,152,152));
 		this.setLayout(appLayout);
 		
 		//Initialize GUI data members
@@ -40,6 +40,8 @@ public class ChatPanel extends JPanel
 		this.add(chatButton);
 		this.add(inputField);
 		this.add(chatArea);
+		chatArea.setEnabled(false);
+		chatArea.setEditable(false);
 	}
 	
 	private void setupLayout()
