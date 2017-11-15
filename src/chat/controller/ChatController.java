@@ -2,6 +2,7 @@ package chat.controller;
 
 import chat.model.Chatbot;
 import chat.view.PopupDisplay; 
+import chat.view.ChatFrame;
 
 public class ChatController 
 {
@@ -12,17 +13,18 @@ public class ChatController
 	{
 		chatbot = new Chatbot("Connor Johnson");
 		display = new PopupDisplay();
+		appFrame = new ChatFrame(this);
 	}
 	
 	public void start()
 	{
 		String response = display.collectResponse("What do you want to talk about?");
 		
-		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))
-		{
-			response = popupChat(response);
-			response = display.collectResponse(response);
-		}
+//		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))
+//		{
+//			response = popupChat(response);
+//			response = display.collectResponse(response);
+//		}
 	}
 //	public String ineractWithChatbot(String input)
 	{
