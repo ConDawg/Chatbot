@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public class Chatbot
 {
+	/*
+	 * makes a neat lookng
+	 */
 	private List<Movie> movieList;
 	private List<String> shoppingList;
 	private List<String> cuteAnimalMemes;
@@ -40,7 +43,9 @@ public class Chatbot
 		buildQuestions();
 		// buildFollowups();
 	}
-
+/**Creates verbs that the chatbot can use in response to the user
+ * 
+ */
 	private void buildVerbs()
 	{
 		verbs[0] = "like";
@@ -63,7 +68,7 @@ public class Chatbot
 		// movieList.add("Shrek; the Final Chapter");
 		// movieList.add("The Calm Before the Storm");
 	}
-
+// This includes topics that the chatbot
 	private void buildTopics()
 	{
 		topics[0] = "Memes";
@@ -74,7 +79,9 @@ public class Chatbot
 		topics[5] = "Cars";
 		topics[6] = "TV shows";
 	}
-
+/**
+ * Adds a bunch of food items that the chatbot can use in a converstation.
+ */
 	private void buildShoppingList()
 	{
 		shoppingList.add("snacks");
@@ -153,7 +160,9 @@ public class Chatbot
 		
 		return response;
 	}
-
+/*
+ * This makes it so that if the user has an input less than 2 characters, it will close.
+ */
 	public boolean lengthChecker(String input)
 	{
 		boolean validLength = false;
@@ -166,7 +175,9 @@ public class Chatbot
 
 		return validLength;
 	}
-
+/*
+ * :Makes sure the tags have proper documentation.
+ */
 	public boolean htmlTagChecker(String input)
 	{
 		boolean validTag = false;
@@ -181,7 +192,7 @@ public class Chatbot
 		}
 		return validTag;
 	}
-
+//
 	public boolean userNameChecker(String input)
 	{
 		boolean validUsername = false;
