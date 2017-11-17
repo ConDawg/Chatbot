@@ -19,7 +19,7 @@ public class ChatbotController
 	
 	public void start()
 	{
-		String response = display.collectResponse("What do you want to talk about?");
+		display.displayText("Henlo");
 		
 //		while (chatbot.lengthChecker(response) && !chatbot.quitChecker(response))
 //		{
@@ -33,10 +33,31 @@ public class ChatbotController
 	}
 	
 	public String popupChat(String chat)
+
 	{
 		String chatbotSays = ""; //Gives a value to a variable that can be returned for the method.
 		
 		chatbotSays += chatbot.processConversation(chat);
+		
+		return chatbotSays;
+	}
+	
+	private void close()
+	{
+		display.displayText("Goodbye");
+		System.exit(0);
+	}
+	
+	public String interactWithChatbot(String input)
+	{
+		String chatbotSays = "";
+		
+		if(chatbot.quitChecker(input))
+		{
+			close();
+		}
+		
+		chatbotSays += chatbot.processConversation(input);
 		
 		return chatbotSays;
 	}

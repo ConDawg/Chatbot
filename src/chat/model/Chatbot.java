@@ -95,8 +95,10 @@ public class Chatbot
 		shoppingList.add("metal spoons");
 		shoppingList.add("freshavacado");
 	}
-
-	private void buildCuteAnimals()//acceptable animal names that can be used
+/**
+ * acceptable animal names that can be used
+ */
+	private void buildCuteAnimals()
 	{
 		cuteAnimalMemes.add("FLOOFER");
 		cuteAnimalMemes.add("pupper");
@@ -106,8 +108,10 @@ public class Chatbot
 		cuteAnimalMemes.add("Dog");
 		cuteAnimalMemes.add("Dik Dik");
 	}
-
-	private void buildQuestions()//lists of a bunch of questions that the chatbot can ask the user.
+/**
+ * lists of a bunch of questions that the chatbot can ask the user.
+ */
+	private void buildQuestions()
 	{
 		questions[0] = "How are you today?";
 		
@@ -160,7 +164,7 @@ public class Chatbot
 		
 		return response;
 	}
-/*
+/**
  * This makes it so that if the user has an input less than 2 characters, it will close.
  */
 	public boolean lengthChecker(String input)
@@ -175,8 +179,8 @@ public class Chatbot
 
 		return validLength;
 	}
-/*
- * :Makes sure the tags have proper documentation.
+/**
+ * Makes sure the tags have proper documentation.
  */
 	public boolean htmlTagChecker(String input)
 	{
@@ -192,7 +196,9 @@ public class Chatbot
 		}
 		return validTag;
 	}
-//
+/**
+ * 
+ */
 	public boolean userNameChecker(String input)
 	{
 		boolean validUsername = false;
@@ -257,6 +263,9 @@ public class Chatbot
 
 	public boolean keyboardMashChecker(String sample)
 	{
+		/**
+		 * This checks to see if the response given is just randomness
+		 */
 		boolean validKeyboard = false;
 		
 		if (sample.contains("sdf") || sample.contains("SDF") || sample.contains("dfg") || sample.contains("cvb") || sample.contains(",./") || sample.contains("kjh") || sample.contains("DFG") || sample.contains("DFG") || sample.contains("CVB") || sample.contains("KJH"))
