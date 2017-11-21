@@ -29,7 +29,7 @@ public class Chatbot
 		this.currentTime = null;
 		this.questions = new String[10];
 		this.username = username;
-		this.content = null;
+		this.content = "Words go here";
 		this.intro = null;
 		this.currentTime = null;
 		this.topics = new String[7];
@@ -197,7 +197,7 @@ public class Chatbot
 		return validTag;
 	}
 /**
- * 
+ * checks the username including the '@'
  */
 	public boolean userNameChecker(String input)
 	{
@@ -212,7 +212,13 @@ public class Chatbot
 
 	public boolean contentChecker(String contentCheck)
 	{
-		return false;
+		boolean validContent = false;
+		
+		if(contentCheck.contains(content))
+		{
+			validContent = true;
+		}
+		return validContent;
 	}
 
 	public boolean cuteAnimalMemeChecker(String input)
@@ -242,12 +248,19 @@ public class Chatbot
 
 	public boolean movieTitleChecker(String title)
 	{
-		return false;
+		boolean validTitle = false;
+		
+		if(!title.equals("")&& title.equals("Spiderman") || title.equals("Hidden Figures"))
+		{
+			validTitle = true;
+		}
+		
+		return validTitle;
 	}
 
 	public boolean movieGenreChecker(String genre)
 	{
-		return false;
+		return null;
 	}
 
 	public boolean quitChecker(String exitString)

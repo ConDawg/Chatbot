@@ -4,6 +4,12 @@ import chat.model.Chatbot;
 import chat.view.PopupDisplay; 
 import chat.view.ChatFrame;
 
+/**
+ * Manages the chatbot app including the model and frame of view package
+ * @author Connor Johnson
+ * @version 21.11.17 Added Frame 1.3
+ */
+
 public class ChatbotController 
 {
 	private Chatbot chatbot;
