@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import chat.controller.ChatbotController;
+import javax.swing.JLabel;
 
 public class ChatPanel extends JPanel
 {
@@ -18,6 +19,7 @@ public class ChatPanel extends JPanel
 	private JTextArea chatArea;
 	private SpringLayout appLayout;
 	private JButton checkerButton;
+	private JLabel infoLabel;
 	
 	public ChatPanel(ChatbotController appController)
 	{
@@ -27,6 +29,7 @@ public class ChatPanel extends JPanel
 		chatArea = new JTextArea(10, 25);
 		inputField = new JTextField(20);
 		appLayout = new SpringLayout();
+		infoLabel = new JLabel("Type to chat with BMO")
 		checkerButton = new JButton("Check Me");
 
 		
@@ -46,6 +49,7 @@ public class ChatPanel extends JPanel
 		this.add(inputField);
 		this.add(chatArea);
 		this.add(checkerButton);
+		this.add(infoLabel);
 		chatArea.setEnabled(false);
 		chatArea.setEditable(false);
 	}
@@ -79,8 +83,21 @@ public class ChatPanel extends JPanel
 				{
 					public void actionPerformed(ActionEvent click)
 					{
-						
+						String userText = inputField.getText();
+						String displayText = appController.interactWithChatbot(userText);
+						chatArea.append(displayText);
+						inputField.setText("");
 					}
 				});
+				checkerButton.addActionListener(new ActionListener()
+						{
+							public void actionPerformed(ActionEvent click)
+							{
+								String userText = inputField.getText();
+								String displayText = appController.useCheckers(userText);
+								chatArea.append(displayText);
+								inputField.setText("");
+							}
+						});
 	}
 }

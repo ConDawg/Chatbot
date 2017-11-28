@@ -48,6 +48,37 @@ public class ChatbotController
 		return chatbotSays;
 	}
 	
+	public String useCheckers(String text)
+	{
+		String response = "";
+		
+		if(chatbot.contentChecker(text))
+		{
+			response += "This text matches the special content\n";
+		}
+		if(chatbot.cuteAnimalMemeChecker(text))
+		{
+			response += "";
+		}
+		//do all checkers except length and quit checker
+		if(chatbot.shoppingListChecker(text))
+		{
+			response += "";
+		}
+		
+		if(chatbot.keyboardMashChecker(text))
+		{
+			response += "I don't speak Italian.\n";
+		}
+		
+		if(chatbot.userNameChecker(text))
+		{
+			response += "nifty username!.\n";
+		}
+		return response;
+	}
+	 
+	
 	private void close()
 	{
 		display.displayText("Goodbye");
