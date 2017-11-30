@@ -1,3 +1,4 @@
+
 package chat.model;
 
 import java.util.List;
@@ -43,9 +44,11 @@ public class Chatbot
 		buildQuestions();
 		// buildFollowups();
 	}
-/**Creates verbs that the chatbot can use in response to the user
- * 
- */
+
+	/**
+	 * Creates verbs that the chatbot can use in response to the user
+	 * 
+	 */
 	private void buildVerbs()
 	{
 		verbs[0] = "like";
@@ -68,7 +71,8 @@ public class Chatbot
 		// movieList.add("Shrek; the Final Chapter");
 		// movieList.add("The Calm Before the Storm");
 	}
-// This includes topics that the chatbot
+
+	// This includes topics that the chatbot
 	private void buildTopics()
 	{
 		topics[0] = "Memes";
@@ -79,9 +83,10 @@ public class Chatbot
 		topics[5] = "Cars";
 		topics[6] = "TV shows";
 	}
-/**
- * Adds a bunch of food items that the chatbot can use in a converstation.
- */
+
+	/**
+	 * Adds a bunch of food items that the chatbot can use in a converstation.
+	 */
 	private void buildShoppingList()
 	{
 		shoppingList.add("snacks");
@@ -95,9 +100,10 @@ public class Chatbot
 		shoppingList.add("metal spoons");
 		shoppingList.add("freshavacado");
 	}
-/**
- * acceptable animal names that can be used
- */
+
+	/**
+	 * acceptable animal names that can be used
+	 */
 	private void buildCuteAnimals()
 	{
 		cuteAnimalMemes.add("FLOOFER");
@@ -108,13 +114,14 @@ public class Chatbot
 		cuteAnimalMemes.add("Dog");
 		cuteAnimalMemes.add("Dik Dik");
 	}
-/**
- * lists of a bunch of questions that the chatbot can ask the user.
- */
+
+	/**
+	 * lists of a bunch of questions that the chatbot can ask the user.
+	 */
 	private void buildQuestions()
 	{
 		questions[0] = "How are you today?";
-		
+
 		questions[1] = "What Is your favorite sport?";
 		questions[2] = "What Is your favorite TV show?";
 		questions[3] = "Why do I exist?";
@@ -125,10 +132,12 @@ public class Chatbot
 		questions[8] = "What is your favorite movie?";
 		questions[9] = "What is your favorite book?";
 	}
-/**Methods operate by taking what is said and arranging that to the method's purpose(Creates a response).
-		 * input the users text as a string.
-		 * Returns the user input and a response built by buildChatbotResponse.
-		 */
+
+	/**
+	 * Methods operate by taking what is said and arranging that to the method's purpose(Creates a
+	 * response). input the users text as a string. Returns the user input and a response built by
+	 * buildChatbotResponse.
+	 */
 	public String processConversation(String input)
 	{
 		String chatbotResponse = "";
@@ -138,11 +147,13 @@ public class Chatbot
 
 		return chatbotResponse;
 	}
-		
-	
-/**This method takes various items the user previously input (verbs, topics, movies, ect.) and formulates a sentence.
- * @return Random response is given
- */
+
+	/**
+	 * This method takes various items the user previously input (verbs, topics, movies, ect.) and
+	 * formulates a sentence.
+	 * 
+	 * @return Random response is given
+	 */
 	private String buildChatbotResponse()
 	{
 		String response = "I ";
@@ -155,17 +166,17 @@ public class Chatbot
 
 		random = (int) (Math.random() * topics.length);
 		response += questions[random];
-	
+
 		random = (int) (Math.random() * 2);
-		
+
 		if (random % 2 == 0)
 		{
 			random = (int) (Math.random() * movieList.size());
 			response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
 		}
-		
+
 		int followup = (int) (Math.random() * 5);
-		
+
 		switch (followup)
 		{
 		case 0:
@@ -181,61 +192,70 @@ public class Chatbot
 			response += followUps[3] + "\n";
 			break;
 		}
-		
-		
+
 		return response;
 	}
-	
-	
-	
-	
-	
-/**
- * This makes it so that if the user has an input less than 2 characters, it will close.
- */
+
+	/**
+	 * This makes it so that if the user has an input less than 2 characters, it will close.
+	 */
 	public boolean lengthChecker(String input)
 	{
 		boolean validLength = false;
 
 		if (input != null && input.length() > 2)
-			
+
 		{
 			validLength = true;
 		}
 
 		return validLength;
 	}
-/**
- * Makes sure the tags have proper documentation.
- */
+
+	/**
+	 * Makes sure the tags have proper documentation.
+	 */
 	public boolean htmlTagChecker(String input)
 	{
-		boolean validTag = false;
-		
-		if (!input.contains("<") && ! input.contains(">"))
+		boolean containsHTML = false;
+		if (input == null || !input.contains("<"))
 		{
-			validTag = false;
+			return containsHTML;
 		}
-		else if (input.contains("<>") || input.contains("< >"))
+		int firstOpen = input.indexOf("<");
+		int firstClose = input.indexOf(">", firstOpen);
+		int secondOpen = -9;
+		int secondClose = -9;
+		String tagText = "";
+
+		// Check bad tags
+		if (input.contains("<>") || input.indexOf("< >") > -1)
 		{
-			validTag = false;
+			containsHTML = false;
 		}
-		else if(input.indexOf(1).contains("B", "I"))
+		// check singleton
+		if (input.toUpperCase().contains("<P>") || input.toLowerCase().contains("<br>"))
 		{
-			validTag = false;
+			containsHTML = true;
 		}
-		else if(input.indexOf(1)) 
-				
-		return validTag;
+		// Check others
+		else if (firstClose > firstOpen)
+		{
+			// Others
+			tagText = input.substring(firstOpen + 1, firstClose).toLowerCase();
+			secondOpen = input.toLowerCase().indexOf("</" + tagText, firstClose);
+		}
+		return containsHTML;
 	}
-/**
- * checks the username including the '@'
- */
+
+	/**
+	 * checks the username including the '@'
+	 */
 	public boolean userNameChecker(String input)
 	{
 		boolean validUsername = false;
-		
-		if (input != "" && input != null && input.indexOf("@") <= 0 && input.indexOf("@") >= 0 && !input.contains("@"+"@"))
+
+		if (input != "" && input != null && input.indexOf("@") <= 0 && input.indexOf("@") >= 0 && !input.contains("@" + "@"))
 		{
 			validUsername = true;
 		}
@@ -245,8 +265,8 @@ public class Chatbot
 	public boolean contentChecker(String contentCheck)
 	{
 		boolean validContent = false;
-		
-		if(contentCheck.contains(content))
+
+		if (contentCheck.contains(content))
 		{
 			validContent = true;
 		}
@@ -256,21 +276,21 @@ public class Chatbot
 	public boolean cuteAnimalMemeChecker(String input)
 	{
 		boolean validMeme = false;
-		
-		if(!input.equals("pepe") && input.equals("pupper") || input.equals("otter") || input.equals("kittie"))
+
+		if (!input.equals("pepe") && input.equals("pupper") || input.equals("otter") || input.equals("kittie"))
 		{
 			validMeme = true;
 		}
 		return validMeme;
 	}
 
-	public boolean shoppingListChecker(String shoppingItem)//clears the response to ensure that the item is valid
+	public boolean shoppingListChecker(String shoppingItem)// clears the response to ensure that the item is valid
 	{
 		boolean validList = false;
-		
-		for (int index = 0; index < 11; index ++)
+
+		for (int index = 0; index < 11; index++)
 		{
-			if(shoppingItem.contains(shoppingList.get(index)))
+			if (shoppingItem.contains(shoppingList.get(index)))
 			{
 				validList = true;
 			}
@@ -281,18 +301,18 @@ public class Chatbot
 	public boolean movieTitleChecker(String title)
 	{
 		boolean validTitle = false;
-		
-		if(!title.equals("")&& title.equals("Spiderman") || title.equals("Hidden Figures"))
+
+		if (!title.equals("") && title.equals("Spiderman") || title.equals("Hidden Figures"))
 		{
 			validTitle = true;
 		}
-		
+
 		return validTitle;
 	}
 
-//	public boolean movieGenreChecker(String genre)
+	// public boolean movieGenreChecker(String genre)
 	{
-//		return null;
+		// return null;
 	}
 
 	public boolean quitChecker(String exitString)
@@ -312,8 +332,9 @@ public class Chatbot
 		 * This checks to see if the response given is just randomness
 		 */
 		boolean validKeyboard = false;
-		
-		if (sample.contains("sdf") || sample.contains("SDF") || sample.contains("dfg") || sample.contains("cvb") || sample.contains(",./") || sample.contains("kjh") || sample.contains("DFG") || sample.contains("DFG") || sample.contains("CVB") || sample.contains("KJH"))
+
+		if (sample.contains("sdf") || sample.contains("SDF") || sample.contains("dfg") || sample.contains("cvb") || sample.contains(",./") || sample.contains("kjh") || sample.contains("DFG")
+				|| sample.contains("DFG") || sample.contains("CVB") || sample.contains("KJH"))
 		{
 			validKeyboard = true;
 		}
