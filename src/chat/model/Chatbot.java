@@ -171,8 +171,8 @@ public class Chatbot
 
 		if (random % 2 == 0)
 		{
-			random = (int) (Math.random() * movieList.size());
-			response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
+	//		random = (int) (Math.random() * movieList.size());
+	//		response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
 		}
 
 		int followup = (int) (Math.random() * 5);
