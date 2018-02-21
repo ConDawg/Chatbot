@@ -122,7 +122,7 @@ public class ChatbotTest
 		assertTrue("Hidden Figures is a class movie", testedChatbot.movieTitleChecker("Hidden Figures"));
 	}
 
-	@Test
+//	@Test
 //	public void testMovieGenreChecker()
 	{
 //		assertFalse("No blanks in genre", testedChatbot.movieGenreChecker(""));

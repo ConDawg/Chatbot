@@ -36,6 +36,11 @@ public class ChatbotController
 //	public String ineractWithChatbot(String input)
 	{
 		
+	public void handleErrors(Excepthon error)
+{
+	display.displayText(error.getMessage);
+}
+		
 	}
 	
 	public String popupChat(String chat)

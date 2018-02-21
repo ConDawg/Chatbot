@@ -32,17 +32,17 @@ public class Chatbot
 		this.username = username;
 		this.content = "Words go here";
 		this.intro = null;
-		this.currentTime = null;
+		this.currentTime = LocalTime.now();
 		this.topics = new String[7];
 		this.verbs = new String[4];
-		this.followUps = new String[5];
+		this.followUps = new String[6];
 
 		buildVerbs();
 		buildShoppingList();
 		buildCuteAnimals();
 		buildTopics();
 		buildQuestions();
-		// buildFollowups();
+		buildFollowups();
 	}
 
 	/**
@@ -90,8 +90,8 @@ public class Chatbot
 	private void buildShoppingList()
 	{
 		shoppingList.add("snacks");
-		shoppingList.add("Veggies");
-		shoppingList.add("protien");
+		shoppingList.add("veggies");
+		shoppingList.add("protein");
 		shoppingList.add("fruit");
 		shoppingList.add("chicken tendies");
 		shoppingList.add("noodles");
@@ -99,6 +99,7 @@ public class Chatbot
 		shoppingList.add("Pizza rolls");
 		shoppingList.add("metal spoons");
 		shoppingList.add("freshavacado");
+		
 	}
 
 	/**
@@ -106,7 +107,7 @@ public class Chatbot
 	 */
 	private void buildCuteAnimals()
 	{
-		cuteAnimalMemes.add("FLOOFER");
+		cuteAnimalMemes.add("floofer");
 		cuteAnimalMemes.add("pupper");
 		cuteAnimalMemes.add("otter");
 		cuteAnimalMemes.add("kittie");
@@ -120,7 +121,7 @@ public class Chatbot
 	 */
 	private void buildQuestions()
 	{
-		questions[0] = "How are you today?";
+		questions[0] = "Whats ur name littl boi?";
 
 		questions[1] = "What Is your favorite sport?";
 		questions[2] = "What Is your favorite TV show?";
@@ -132,6 +133,16 @@ public class Chatbot
 		questions[8] = "What is your favorite movie?";
 		questions[9] = "What is your favorite book?";
 	}
+	private void buildFollowups()
+	{
+		followUps[0] = "You look cute today";
+		followUps[1] = "I want to sneeze on your handkerchief.";
+		followUps[2] = "Mayo isn't a condiment, its a torture device";
+		followUps[3] = "sticky sandbags typically do not exist";
+		followUps[4] = "salamanders are unintelligent compared to dr marvin brooks, a phd master at MIT";
+		followUps[5] = "Cthulu only wants the world to be pure in his eye, were not gunna let that happen, get your weapons boys";
+				
+	}
 
 	/**
 	 * Methods operate by taking what is said and arranging that to the method's purpose(Creates a
@@ -141,6 +152,8 @@ public class Chatbot
 	public String processConversation(String input)
 	{
 		String chatbotResponse = "";
+		currentTime = LocalTime.now();
+		chatbotResponse += currentTime.getHour() + ":" + currentTime.getMinute() + " ";
 		chatbotResponse += "You said:" + "\n" + input + "\n";
 
 		chatbotResponse += buildChatbotResponse();
@@ -174,6 +187,8 @@ public class Chatbot
 	//		random = (int) (Math.random() * movieList.size());
 	//		response += "\n" + movieList.get(random).getTitle() + " is a great movie!";
 		}
+		
+		
 
 		int followup = (int) (Math.random() * 5);
 
@@ -262,6 +277,12 @@ public class Chatbot
 		return validUsername;
 	}
 
+	public String toString()
+	{
+		String descriptionString = "";
+		return descriptionString;
+	}
+	
 	public boolean contentChecker(String contentCheck)
 	{
 		boolean validContent = false;
@@ -288,7 +309,7 @@ public class Chatbot
 	{
 		boolean validList = false;
 
-		for (int index = 0; index < 11; index++)
+		for (int index = 0; index < shoppingList.size(); index++)
 		{
 			if (shoppingItem.contains(shoppingList.get(index)))
 			{
